@@ -19,6 +19,7 @@ class AddProductOverlay extends StatefulWidget {
 }
 
 class _AddProductOverlayState extends State<AddProductOverlay> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController nameCtrl = TextEditingController();
   TextEditingController dscCtrl = TextEditingController();
   TextEditingController priceCtrl = TextEditingController();
@@ -42,6 +43,7 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Form(
+        key: formKey,
         child: Column(
           children: [
             Spacer(),
@@ -49,6 +51,13 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
               child: TextFormField(
                 controller: nameCtrl,
                 decoration: textFieldDeco,
+                validator: (value) {
+                  if (value!.isNotEmpty) {
+                    return null;
+                  } else {
+                    return "Please enter name";
+                  }
+                },
               ),
             ),
             SizedBox(
@@ -58,6 +67,13 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
               child: TextFormField(
                 controller: dscCtrl,
                 decoration: textFieldDeco,
+                validator: (value) {
+                  if (value!.isNotEmpty) {
+                    return null;
+                  } else {
+                    return "Please enter description";
+                  }
+                },
               ),
             ),
             SizedBox(
@@ -70,6 +86,14 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
                   child: TextFormField(
                     controller: priceCtrl,
                     decoration: textFieldDeco,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please enter price";
+                      }
+                      if (double.parse(value) <= 0) {
+                        return "Should be more than 0";
+                      }
+                    },
                     keyboardType: TextInputType.number,
                   ),
                 ),
@@ -83,16 +107,18 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
                     height: 40,
                     child: ElevatedButton(
                       onPressed: () async {
-                        if (widget.onSubmit != null) {
-                          widget.onSubmit!(
-                            Product(
-                              name: nameCtrl.text,
-                              description: dscCtrl.text,
-                              price: double.parse(priceCtrl.text),
-                            ),
-                          );
-                        } else {
-                          return;
+                        if (formKey.currentState!.validate()) {
+                          if (widget.onSubmit != null) {
+                            widget.onSubmit!(
+                              Product(
+                                name: nameCtrl.text,
+                                description: dscCtrl.text,
+                                price: double.parse(priceCtrl.text),
+                              ),
+                            );
+                          } else {
+                            return;
+                          }
                         }
                       },
                       child: Text('Add to store'),

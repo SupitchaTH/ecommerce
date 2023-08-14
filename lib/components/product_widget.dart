@@ -7,13 +7,15 @@ class ProductWidget extends StatelessWidget {
   final Product product;
   final VoidCallback? onDelete;
   final VoidCallback? onUpdate;
+  final VoidCallback? onAddTocart;
   final bool isAdmin;
   const ProductWidget(
       {super.key,
       required this.product,
       this.isAdmin = false,
       this.onDelete,
-      this.onUpdate});
+      this.onUpdate,
+      this.onAddTocart});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,14 @@ class ProductWidget extends StatelessWidget {
                       )
                     ],
                   ),
-                )
+                ),
+                Visibility(
+                  visible: !isAdmin,
+                  child: TextButton(
+                    onPressed: onAddTocart,
+                    child: Text('Add to cart'),
+                  ),
+                ),
               ],
             ),
           ),

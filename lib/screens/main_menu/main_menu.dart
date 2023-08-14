@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:ecommerce/screens/main_menu/main_menu.controller.dart';
+import 'package:ecommerce/screens/user_page/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,7 +41,10 @@ class _MainMenuState extends State<MainMenu> {
                   child: Text('To Admin'),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => UserPage()));
+                  },
                   child: Text('To User'),
                 )
               ],
