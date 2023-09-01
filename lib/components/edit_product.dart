@@ -25,7 +25,10 @@ class _EditProductState extends State<EditProduct> {
   late TextEditingController dscCtrl;
   late TextEditingController priceCtrl;
 
-  InputDecoration textFieldDeco = InputDecoration(border: OutlineInputBorder());
+  InputDecoration textFieldDeco = InputDecoration(
+      border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(20),
+  ));
 
   @override
   void initState() {
@@ -49,7 +52,23 @@ class _EditProductState extends State<EditProduct> {
       child: Form(
         child: Column(
           children: [
-            Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                'Edit product',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Text('Name of product :'),
+              ),
+            ),
             Flexible(
               child: TextFormField(
                 controller: nameCtrl,
@@ -59,6 +78,13 @@ class _EditProductState extends State<EditProduct> {
             SizedBox(
               height: 10,
             ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Text('Description of product :'),
+              ),
+            ),
             Flexible(
               child: TextFormField(
                 controller: dscCtrl,
@@ -66,11 +92,18 @@ class _EditProductState extends State<EditProduct> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 16,
             ),
             Row(
               children: [
                 Spacer(),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text('Price :'),
+                  ),
+                ),
                 Flexible(
                   child: TextFormField(
                     controller: priceCtrl,
@@ -87,6 +120,13 @@ class _EditProductState extends State<EditProduct> {
                   child: SizedBox(
                     height: 40,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green[400],
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
                       onPressed: () async {
                         if (widget.onEdit != null) {
                           widget.onEdit!(

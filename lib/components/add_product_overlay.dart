@@ -24,7 +24,10 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
   TextEditingController dscCtrl = TextEditingController();
   TextEditingController priceCtrl = TextEditingController();
 
-  InputDecoration textFieldDeco = InputDecoration(border: OutlineInputBorder());
+  InputDecoration textFieldDeco = InputDecoration(
+      border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(20),
+  ));
 
   @override
   void initState() {
@@ -46,7 +49,23 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
         key: formKey,
         child: Column(
           children: [
-            Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                'Add product',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Text('Name of product :'),
+              ),
+            ),
             Flexible(
               child: TextFormField(
                 controller: nameCtrl,
@@ -63,6 +82,13 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
             SizedBox(
               height: 10,
             ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Text('Description of product :'),
+              ),
+            ),
             Flexible(
               child: TextFormField(
                 controller: dscCtrl,
@@ -77,11 +103,18 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 16,
             ),
             Row(
               children: [
                 Spacer(),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text('Price :'),
+                  ),
+                ),
                 Flexible(
                   child: TextFormField(
                     controller: priceCtrl,
@@ -106,6 +139,13 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
                   child: SizedBox(
                     height: 40,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green[400],
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
                           if (widget.onSubmit != null) {
@@ -126,7 +166,7 @@ class _AddProductOverlayState extends State<AddProductOverlay> {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

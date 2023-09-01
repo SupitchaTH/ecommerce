@@ -12,6 +12,9 @@ class CheckoutPage extends StatelessWidget {
       builder: (context, con, child) {
         return Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.green[900],
+            elevation: 0,
+            centerTitle: true,
             title: Text('Checkout'),
           ),
           body: Column(
@@ -28,27 +31,46 @@ class CheckoutPage extends StatelessWidget {
                 ),
               ),
               Container(
-                color: Colors.blue[200],
+                color: Colors.green[900],
                 height: 60,
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 10,
+                      width: 20,
                     ),
-                    Text('x ${con.itemCount}'),
+                    Text(
+                      'x ${con.itemCount}',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     Spacer(),
-                    Text('Total : ${con.getTotalPrice()}'),
+                    Text(
+                      'Total : ${con.getTotalPrice()} ฿',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
                     SizedBox(
                       width: 10,
                     ),
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green[200],
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
                       onPressed: () {
                         con.itemClear();
                       },
-                      child: Text('Pay'),
+                      child: Text(
+                        'Pay',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green[900]),
+                      ),
                     ),
                     SizedBox(
-                      width: 10,
+                      width: 20,
                     ),
                   ],
                 ),

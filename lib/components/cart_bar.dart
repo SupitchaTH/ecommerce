@@ -19,21 +19,30 @@ class _CartBarState extends State<CartBar> {
       builder: (context, con, child) {
         return Container(
           height: 60,
-          color: Colors.blue[300],
+          color: Colors.green[900],
           child: Row(
             children: [
               SizedBox(
-                width: 10,
+                width: 20,
               ),
               Icon(
                 Icons.shopping_bag,
+                color: Colors.white,
               ),
               Text(
                 'x ${con.itemCount}',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
               Spacer(),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green[200],
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -42,10 +51,14 @@ class _CartBarState extends State<CartBar> {
                     ),
                   );
                 },
-                child: Text('Checkout'),
+                child: Text(
+                  'Checkout',
+                  style: TextStyle(
+                      color: Colors.green[900], fontWeight: FontWeight.bold),
+                ),
               ),
               SizedBox(
-                width: 10,
+                width: 20,
               ),
             ],
           ),

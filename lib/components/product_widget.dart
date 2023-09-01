@@ -24,21 +24,35 @@ class ProductWidget extends StatelessWidget {
       child: SizedBox(
         height: 150,
         child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
                 Spacer(),
-                Text(
-                  product.name,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Product:   ${product.name}',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 Spacer(),
-                Text(product.description),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Detial:   ${product.description}')),
                 Spacer(),
-                Text(
-                  product.price.toString(),
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    Text('Price:'),
+                    Spacer(),
+                    Text(
+                      product.price.toString(),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
                 Spacer(),
                 Visibility(
@@ -47,7 +61,10 @@ class ProductWidget extends StatelessWidget {
                     children: [
                       TextButton(
                         onPressed: onUpdate,
-                        child: Text('update'),
+                        child: Text(
+                          'update',
+                          style: TextStyle(color: Colors.green[900]),
+                        ),
                       ),
                       Spacer(),
                       GestureDetector(
@@ -63,7 +80,13 @@ class ProductWidget extends StatelessWidget {
                   visible: !isAdmin,
                   child: TextButton(
                     onPressed: onAddTocart,
-                    child: Text('Add to cart'),
+                    child: Text(
+                      'Add to cart',
+                      style: TextStyle(
+                          color: Colors.green[900],
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ],

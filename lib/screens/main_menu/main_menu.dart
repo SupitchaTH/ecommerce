@@ -28,6 +28,7 @@ class _MainMenuState extends State<MainMenu> {
       child: Consumer<MainMenuController>(builder: (context, con, child) {
         return Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.green[900],
             title: Text('Main Menu'),
             centerTitle: true,
             elevation: 0,
@@ -36,16 +37,41 @@ class _MainMenuState extends State<MainMenu> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: con.goToAdmin,
-                  child: Text('To Admin'),
+                SizedBox(
+                  height: 50,
+                  width: 150,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green[900],
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    onPressed: con.goToAdmin,
+                    child: Text('Admin'),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => UserPage()));
-                  },
-                  child: Text('To User'),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 150,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green[900],
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => UserPage()));
+                    },
+                    child: Text('User'),
+                  ),
                 )
               ],
             ),

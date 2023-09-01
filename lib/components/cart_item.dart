@@ -12,19 +12,36 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return SizedBox(
+      height: 60,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Row(
-          children: [
-            Text("${product.name}"),
-            Spacer(),
-            Text("${product.price}"),
-            GestureDetector(
-              onTap: ondelete,
-              child: Icon(Icons.delete),
-            )
-          ],
+        padding: const EdgeInsets.symmetric(horizontal: 6),
+        child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          color: Colors.grey[200],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                Text(
+                  "${product.name}",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                Spacer(),
+                Text(
+                  "${product.price}",
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: ondelete,
+                  child: Icon(Icons.delete),
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );

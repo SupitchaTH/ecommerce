@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:ecommerce/components/cart_bar.dart';
 import 'package:ecommerce/components/product_widget.dart';
 import 'package:ecommerce/providers/cart_provider.dart';
@@ -32,8 +34,15 @@ class _UserPageState extends State<UserPage> {
       child: Consumer<UserPageController>(
         builder: (context, con, child) {
           return Scaffold(
+            backgroundColor: Colors.green[200],
             appBar: AppBar(
-              title: Text("User Page"),
+              iconTheme: IconThemeData(color: Colors.green[900]),
+              backgroundColor: Colors.green[200],
+              elevation: 0,
+              title: Text(
+                "User Page",
+                style: TextStyle(color: Colors.green[900]),
+              ),
               centerTitle: true,
             ),
             body: Column(

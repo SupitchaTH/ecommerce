@@ -35,8 +35,9 @@ class _AdminPageState extends State<AdminPage> {
       child: Consumer<AdminPageController>(
         builder: (context, con, child) {
           return Scaffold(
-            backgroundColor: Colors.purple[200],
+            backgroundColor: Colors.green[200],
             floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.green[900],
               onPressed: () {
                 showModalBottomSheet(
                   context: context,
@@ -53,10 +54,14 @@ class _AdminPageState extends State<AdminPage> {
               child: Icon(Icons.add),
             ),
             appBar: AppBar(
+              iconTheme: IconThemeData(color: Colors.green[900]),
               elevation: 0,
-              backgroundColor: Colors.purple[200],
+              backgroundColor: Colors.green[200],
               centerTitle: true,
-              title: Text('Admin Page'),
+              title: Text(
+                'Admin Page',
+                style: TextStyle(color: Colors.green[900]),
+              ),
             ),
             body: ListView.builder(
               itemCount: con.productList.length,
