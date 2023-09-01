@@ -1,6 +1,6 @@
 # ecommerce
 
-A new Flutter project.
+A new Flutter ecommerce project with mvc pattern by using provider.
 
 ## Getting Started
 
